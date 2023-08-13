@@ -49,7 +49,7 @@
             this.graphView1.GraphModel = plotModel1;
             this.graphView1.Location = new System.Drawing.Point(55, 12);
             this.graphView1.Name = "graphView1";
-            this.graphView1.Size = new System.Drawing.Size(546, 236);
+            this.graphView1.Size = new System.Drawing.Size(546, 248);
             this.graphView1.TabIndex = 0;
             this.graphView1.Text = "graphView1";
             // 
