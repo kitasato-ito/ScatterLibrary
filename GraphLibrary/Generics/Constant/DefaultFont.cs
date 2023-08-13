@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphLibrary.Struct;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,17 +10,17 @@ namespace GraphLibrary.Generics
 {
     internal class DefaultFont
     {
-        public static Font DefaultTitleFont()
+        public static FontProperty DefaultTitleFont()
         {
-            return new Font(new FontFamily("Arial"), 7f);
+            return new FontProperty(FontNameType.ARIAL, 7f, Color.Black);
         }
-        public static Font DefaultLabelValueFont()
+        public static FontProperty DefaultLabelValueFont()
         {
-            return new Font(new FontFamily("Arial"), 7f);
+            return new FontProperty(FontNameType.ARIAL, 7f, Color.Black);
         }
-        public static Font DefaultLabelNameFont()
+        public static FontProperty DefaultLabelNameFont()
         {
-            return new Font(new FontFamily("Arial"), 9f);
+            return new FontProperty(FontNameType.ARIAL, 7f, Color.Black);
         }
     }
 }

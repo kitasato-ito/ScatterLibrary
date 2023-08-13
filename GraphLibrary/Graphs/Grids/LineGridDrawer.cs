@@ -17,7 +17,7 @@ namespace GraphLibrary.Graphs
 
         public void DrawGrid(RegionF regionF, AxisValue axisValue, Graphics g)
         {
-            throw new NotImplementedException();
+            return;
         }
         public void SetColor(Color color)
         {

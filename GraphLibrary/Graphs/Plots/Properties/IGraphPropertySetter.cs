@@ -12,6 +12,6 @@ namespace GraphLibrary.Graphs.Plots
         void SetName(string name);
         void SetColor(Color color);
 
-        void SetSize(int _size);
+        void SetSize(float _size);
     }
 }

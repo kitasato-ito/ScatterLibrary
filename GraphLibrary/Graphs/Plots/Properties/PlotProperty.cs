@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace GraphLibrary.Graphs.Plots
 {
-    internal struct PlotProperty
+    public struct PlotProperty
     {
         public string PlotName;
         public Color PlotColor;
-        public int Size;
+        public float Size;
 
-        public PlotProperty(string name, Color color, int size)
+        public PlotProperty(string name, Color color, float size)
         {
             if (String.IsNullOrEmpty(name)) throw new ValueSettingException();
             if (color == null) throw new ValueSettingException();

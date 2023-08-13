@@ -1,4 +1,6 @@
 ﻿using GraphLibrary.Generics;
+using GraphLibrary.Generics.Converter;
+using GraphLibrary.Struct;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -11,7 +13,7 @@ namespace GraphLibrary.Graphs.Titles
     public class GraphTitle : ITitle
     {
         public string Title { get; set; }
-        public Font FontType { get; set; } = DefaultFont.DefaultTitleFont();
+        public FontProperty FontType { get; set; } = DefaultFont.DefaultTitleFont();
 
         public GraphTitle(string name)
         {
@@ -21,7 +23,15 @@ namespace GraphLibrary.Graphs.Titles
 
         public void DrawTitle(RegionF regionF, Graphics g)
         {
-            throw new NotImplementedException();
+            var halfWidth = regionF.Width / 2f;
+            var h = regionF.Height / 3f;
+            var font = new Font(this.FontType.FontName, this.FontType.FontSize);
+
+            var point = new PointF(regionF.OffsetCordinate.X + halfWidth, regionF.OffsetCordinate.Y + h);
+            var brush = BrushToColorConveter.ConvertColorToBrush(this.FontType.FontColor);
+            g.DrawString(this.Title, font, brush, point);
+
+            font.Dispose();
         }
     }
 }

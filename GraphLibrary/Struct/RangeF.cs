@@ -17,6 +17,11 @@ namespace GraphLibrary
             this.Max = max;
         }
 
+        public bool WithinRange(float value)
+        {
+            return this.Min <= value && value <= this.Max;
+        }
+
         public override bool Equals(object obj)
         {
             var r = (RangeF)obj;

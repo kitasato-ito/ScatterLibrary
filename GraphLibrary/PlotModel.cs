@@ -6,12 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using GraphLibrary.Generics;
 using GraphLibrary.Generics.Constant;
+using GraphLibrary.Generics.Converter;
 using GraphLibrary.Generics.Enum;
 using GraphLibrary.Graphs;
 using GraphLibrary.Graphs.Grid;
 using GraphLibrary.Graphs.Legends;
 using GraphLibrary.Graphs.Titles;
 using GraphLibrary.Labels;
+using GraphLibrary.Struct;
 
 namespace GraphLibrary
 {
@@ -106,12 +108,12 @@ namespace GraphLibrary
             this.yGridDrawer.SetColor(color);
         }
 
-        public void SetLegend(Font font)
+        public void SetLegend(FontProperty font)
         {
             this.legend.FontType = font;
         }
 
-        public void SetTitle(string title, Font font)
+        public void SetTitle(string title, FontProperty font)
         {
             this.title.Title = title;
             this.title.FontType = font;
@@ -123,7 +125,7 @@ namespace GraphLibrary
             this.xLabel.SetName(axisName);
         }
 
-        public void SetXLabelFont(Font valueFont, Font axisNameFont)
+        public void SetXLabelFont(FontProperty valueFont, FontProperty axisNameFont)
         {
             this.xLabel.SetAxisFont(axisNameFont);
             this.xLabel.SetValueFont(valueFont);
@@ -135,7 +137,7 @@ namespace GraphLibrary
             this.yLabel.SetName(axisName);
         }
 
-        public void SetYLabelFont(Font valueFont, Font axisNameFont)
+        public void SetYLabelFont(FontProperty valueFont, FontProperty axisNameFont)
         {
             this.yLabel.SetAxisFont(axisNameFont);
             this.yLabel.SetValueFont(valueFont);
@@ -143,13 +145,13 @@ namespace GraphLibrary
 
         internal void DrawXLabel(RegionF region, Graphics g)
         {
-            var decimalString = "F" + xDecimalPlaces.ToString();
+            var decimalString = DecimalPlaceConverter.ConvertIntToDecimalPlace(xDecimalPlaces);
             var values = this.xAxisValue.GetEnumerableValues().Select(v => v.ToString(decimalString));
             this.xLabel.DrawLabel(region, values , g);
         }
         internal void DrawYLabel(RegionF region, Graphics g)
         {
-            var decimalString = "F" + xDecimalPlaces.ToString();
+            var decimalString = DecimalPlaceConverter.ConvertIntToDecimalPlace(yDecimalPlaces);
             var values = this.yAxisValue.GetEnumerableValues().Select(v => v.ToString(decimalString));
             this.yLabel.DrawLabel(region, values, g);
         }

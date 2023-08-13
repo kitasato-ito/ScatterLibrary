@@ -28,13 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            GraphLibrary.PlotModel plotModel1 = new GraphLibrary.PlotModel();
+            this.graphView1 = new GraphLibrary.GraphView();
+            this.SuspendLayout();
+            // 
+            // graphView1
+            // 
+            this.graphView1.GraphModel = plotModel1;
+            this.graphView1.Location = new System.Drawing.Point(82, 36);
+            this.graphView1.Name = "graphView1";
+            this.graphView1.Size = new System.Drawing.Size(557, 269);
+            this.graphView1.TabIndex = 0;
+            this.graphView1.Text = "graphView1";
+            // 
+            // Form1
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.graphView1);
+            this.Name = "Form1";
             this.Text = "Form1";
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private GraphLibrary.GraphView graphView1;
     }
 }
 

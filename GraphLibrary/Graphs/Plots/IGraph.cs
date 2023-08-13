@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GraphLibrary.Graphs
 {
-    public interface IGraph : IEquatable<IGraph>
+    public interface IGraph
     {
         void DrawPlot(RegionF region, RangeF xRange, RangeF yRange, Graphics g);
         IGraphPropertyGetter GetGraphProperty();

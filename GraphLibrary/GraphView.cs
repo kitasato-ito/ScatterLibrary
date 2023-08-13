@@ -69,7 +69,7 @@ namespace GraphLibrary
         /// <param name="g"></param>
         protected override void DrawLegend(RegionF region, Graphics g)
         {
-            this._plotModel.DrawTitle(region, g);
+            this._plotModel.DrawLegend(region, g);
         }
         /// <summary>
         /// Gridの描画

@@ -1,6 +1,7 @@
 ﻿using GraphLibrary.Generics;
 using GraphLibrary.Generics.Constant;
 using GraphLibrary.Graphs.Plots;
+using GraphLibrary.Struct;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,7 +15,7 @@ namespace GraphLibrary.Graphs.Legends
     {
         private IList<IGraphPropertyGetter> legendList = new List<IGraphPropertyGetter>();
 
-        public Font FontType { get; set; } = DefaultFont.DefaultLabelNameFont();
+        public FontProperty FontType { get; set; } = DefaultFont.DefaultLabelNameFont();
 
         public void Add(IGraphPropertyGetter component)
         {
@@ -30,7 +31,7 @@ namespace GraphLibrary.Graphs.Legends
 
         public void DrawLegend(RegionF region, Graphics g)
         {
-            throw new NotImplementedException();
+            return;
         }
 
         public void Remove(IGraphPropertyGetter component)

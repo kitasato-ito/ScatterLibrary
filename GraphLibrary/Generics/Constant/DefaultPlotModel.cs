@@ -26,7 +26,10 @@ namespace GraphLibrary.Generics.Constant
 
         public static AxisValue DefaultAxisValue()
         {
-            return new AxisValue(0, 10, 5);
+            const float MINVALUE = 0f;
+            const float MAXVALUE = 10f;
+            const float DIVISIONVALUE = 5f;
+            return new AxisValue(MINVALUE, MAXVALUE, DIVISIONVALUE);
         }
     }
 }

@@ -8,6 +8,7 @@ using GraphLibrary.Generics.Enum;
 using GraphLibrary.Graphs;
 using GraphLibrary.Graphs.Grid;
 using GraphLibrary.Labels;
+using GraphLibrary.Struct;
 
 namespace GraphLibrary
 {
@@ -15,11 +16,11 @@ namespace GraphLibrary
     {
         void SetXLabelDecimalValue(DecimalPlaces decimalType);
         void SetXLabel(AxisValue xAxisValue, string axisName);
-        void SetXLabelFont(Font valueFont, Font axisNameFont);
+        void SetXLabelFont(FontProperty valueFont, FontProperty axisNameFont);
 
         void SetYLabelDecimalValue(DecimalPlaces decimalType);
         void SetYLabel(AxisValue yAxisValue, string axisName);
-        void SetYLabelFont(Font valueFont, Font axisNameFont);
+        void SetYLabelFont(FontProperty valueFont, FontProperty axisNameFont);
 
         void SetXGrid(GridLineType lineType, Color color);
         void SetXGrid(Color color);
@@ -28,11 +29,11 @@ namespace GraphLibrary
         void ShowLegend();
         void HideLegend();
 
-        void SetLegend(Font font);
+        void SetLegend(FontProperty font);
 
         IEnumerable<IGraph> GetGraph();
 
-        void SetTitle(string title, Font font);
+        void SetTitle(string title, FontProperty font);
 
     }
 }

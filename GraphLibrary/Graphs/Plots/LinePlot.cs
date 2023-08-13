@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using GraphLibrary.Generics.Converter;
 
 namespace GraphLibrary.Graphs.Plots
 {
@@ -11,16 +12,25 @@ namespace GraphLibrary.Graphs.Plots
     {
         public LinePlot() : base()
         {
-
+            base.SetSize(2);
         }
         public override void DrawPlot(RegionF region, RangeF xRange, RangeF yRange, Graphics g)
         {
             throw new NotImplementedException();
         }
-
-        public override IGraphPropertyGetter GetGraphProperty()
+        public void SetLineWidth(float width)
         {
-            throw new NotImplementedException();
+            base.SetSize(width);
+        }
+
+        public void SetLineName(string name)
+        {
+            base.SetName(name);
+        }
+
+        public void SetLineColor(Color color)
+        {
+            base.SetColor(color);
         }
     }
 }

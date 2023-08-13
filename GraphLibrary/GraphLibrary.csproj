@@ -43,12 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\CountOutOfRangeException.cs" />
     <Compile Include="Exceptions\ValueSettingException.cs" />
+    <Compile Include="Generics\Attributes\AttributeGetter.cs" />
+    <Compile Include="Generics\Attributes\FontFamilyAttribute.cs" />
     <Compile Include="Generics\Constant\DefaultColor.cs" />
     <Compile Include="Generics\Constant\DefaultPlotModel.cs" />
     <Compile Include="Generics\Constant\DefaultProperty.cs" />
     <Compile Include="Generics\Constant\DefaultFont.cs" />
+    <Compile Include="Generics\Converter\BrushToColorConveter.cs" />
+    <Compile Include="Generics\Converter\DecimalPlaceConverter.cs" />
+    <Compile Include="Generics\Converter\StringRotate90Converter.cs" />
     <Compile Include="Generics\Enum\DecimalPlaces.cs" />
+    <Compile Include="Generics\Enum\FontNameType.cs" />
     <Compile Include="Generics\Enum\GridDirection.cs" />
     <Compile Include="Generics\Enum\GridLineType.cs" />
     <Compile Include="Generics\Factory\GridFactory.cs" />
@@ -57,6 +64,7 @@
     <Compile Include="Graphs\Grids\IGridDrawer.cs" />
     <Compile Include="Graphs\Grids\LineGridDrawer.cs" />
     <Compile Include="Graphs\Grids\NullGridDrawer.cs" />
+    <Compile Include="Graphs\Labels\IAxisValue.cs" />
     <Compile Include="Graphs\Labels\ILabel.cs" />
     <Compile Include="Graphs\Labels\XLabel.cs" />
     <Compile Include="Graphs\Labels\YLabel.cs" />
@@ -68,11 +76,8 @@
     <Compile Include="Graphs\Plots\LinePlot.cs" />
     <Compile Include="Graphs\Plots\Properties\PlotProperty.cs" />
     <Compile Include="Graphs\Plots\ScatterPlot.cs" />
-    <Compile Include="Graphs\Plots\Properties\BarPlotProperty.cs" />
     <Compile Include="Graphs\Plots\Properties\GraphPropertyBase.cs" />
     <Compile Include="Graphs\Plots\Properties\IGraphPropertySetter.cs" />
-    <Compile Include="Graphs\Plots\Properties\LinePlotProperty.cs" />
-    <Compile Include="Graphs\Plots\Properties\ScatterPlotProperty.cs" />
     <Compile Include="Graphs\Titles\GraphTitle.cs" />
     <Compile Include="Graphs\Labels\Properties\AxisProperty.cs" />
     <Compile Include="Graphs\Plots\Properties\IGraphPropertyGetter.cs" />
@@ -95,11 +100,11 @@
     <Compile Include="Graphs\Labels\AxisValue.cs" />
     <Compile Include="Struct\DataPoint.cs" />
     <Compile Include="Graphs\Grids\Properties\GridProperty.cs" />
+    <Compile Include="Struct\FontProperty.cs" />
     <Compile Include="Struct\RangeF.cs" />
     <Compile Include="Struct\RegionF.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Generics\Converter\" />
     <Folder Include="Generics\Helper\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

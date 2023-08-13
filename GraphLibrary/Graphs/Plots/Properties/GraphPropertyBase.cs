@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace GraphLibrary.Graphs.Plots
 {
-    internal class GraphPropertyBase : IGraphPropertyGetter, IGraphPropertySetter
+    public class GraphPropertyBase : IGraphPropertyGetter, IGraphPropertySetter
     {
         protected PlotProperty plotProperty;
 
@@ -28,7 +28,7 @@ namespace GraphLibrary.Graphs.Plots
             return this.plotProperty.PlotName;
         }
 
-        public int GetSize()
+        public float GetSize()
         {
             return this.plotProperty.Size;
         }
@@ -45,7 +45,7 @@ namespace GraphLibrary.Graphs.Plots
             this.plotProperty.PlotName = name;
         }
 
-        public void SetSize(int _size)
+        public void SetSize(float _size)
         {
             if (_size < 1) throw new ValueSettingException();
             this.plotProperty.Size = _size;

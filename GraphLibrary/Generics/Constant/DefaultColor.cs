@@ -11,7 +11,8 @@ namespace GraphLibrary.Generics
     {
         public static Color DefaultGridColor()
         {
-            return Color.Silver;
+            //Silver
+            return Color.FromArgb(125, 0xC0, 0xC0, 0xC0);
         }
     }
 }

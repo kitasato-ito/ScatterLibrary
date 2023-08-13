@@ -1,4 +1,5 @@
 ﻿using GraphLibrary.Generics;
+using GraphLibrary.Generics.Converter;
 using GraphLibrary.Generics.Enum;
 using GraphLibrary.Graphs.Grid;
 using GraphLibrary.Labels;

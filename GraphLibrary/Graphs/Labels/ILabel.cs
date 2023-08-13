@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphLibrary.Struct;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,8 +10,8 @@ namespace GraphLibrary.Labels
 {
     internal interface ILabel
     {
-        void SetValueFont(Font font);
-        void SetAxisFont(Font font);
+        void SetValueFont(FontProperty font);
+        void SetAxisFont(FontProperty font);
         void SetName(string name);
 
         void DrawLabel(RegionF regionF, IEnumerable<string> values, Graphics g);

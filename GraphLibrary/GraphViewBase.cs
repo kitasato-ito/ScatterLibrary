@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GraphLibrary.Generics.Converter;
 
 namespace GraphLibrary
 {
@@ -187,6 +188,14 @@ namespace GraphLibrary
             throw new NotImplementedException();
         }
 
+        private void DrawPlotArea(RegionF region, Graphics g)
+        {
+            var brush = BrushToColorConveter.ConvertColorToBrush(Color.Black);
+            var pen = new Pen(brush, 1f);
+            g.DrawRectangle(pen, region.OffsetCordinate.X, region.OffsetCordinate.Y, region.Width, region.Height);
+            pen.Dispose();
+        }
+
         protected override void OnPaint(PaintEventArgs pe)
         {
             base.OnPaint(pe);
@@ -208,6 +217,7 @@ namespace GraphLibrary
             DrawLegend(legendRegion, graphics);
 
             var gridRegion = ObtainGridRegion();
+            DrawPlotArea(gridRegion, graphics);
             DrawGrid(gridRegion, graphics);
 
             var plotRegion = ObtainPlotRegion();

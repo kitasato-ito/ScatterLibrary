@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphLibrary.Struct;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace GraphLibrary.Labels
     internal struct AxisProperty
     {
         public string AxisName;
-        public Font ValueFont;
-        public Font AxisFont;
+        public FontProperty ValueFont;
+        public FontProperty AxisFont;
 
-        public AxisProperty(string name, Font valueFont, Font axisFont)
+        public AxisProperty(string name, FontProperty valueFont, FontProperty axisFont)
         {
             this.AxisName = name;
             this.ValueFont = valueFont;

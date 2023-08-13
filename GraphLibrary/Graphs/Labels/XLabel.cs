@@ -1,4 +1,7 @@
-﻿using GraphLibrary.Generics;
+﻿using GraphLibrary.Exceptions;
+using GraphLibrary.Generics;
+using GraphLibrary.Generics.Converter;
+using GraphLibrary.Struct;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,6 +15,8 @@ namespace GraphLibrary.Labels
     {
         private AxisProperty axisProperty;
 
+        private Color color = Color.Black;
+
         public XLabel(string name)
         {
             this.axisProperty = new AxisProperty(name, DefaultFont.DefaultLabelValueFont(), DefaultFont.DefaultLabelNameFont());
@@ -22,9 +27,42 @@ namespace GraphLibrary.Labels
             return this.axisProperty.AxisName;
         }
 
+        private void DrawValue(RegionF regionF, IEnumerable<string> values, Graphics g)
+        {
+            var valueFontProperty = this.axisProperty.ValueFont;
+            var count = values.Count() - 1;
+            var widthUnit = regionF.Width / (float)count;
+            var pointF = regionF.OffsetCordinate;
+            var valueFont = new Font(valueFontProperty.FontName, valueFontProperty.FontSize);
+            //To Hack ; AxisPropertyに入れる
+            var valueBrush = BrushToColorConveter.ConvertColorToBrush(this.axisProperty.ValueFont.FontColor);
+            for (int i = 0; i < count; i++)
+            {
+                var x = pointF.X + widthUnit * (float)i;
+                var y = pointF.Y;
+                var _point = new PointF(x, y);
+                g.DrawString(values.ElementAt(i), valueFont, valueBrush, _point);
+            }
+            valueFont.Dispose();
+        }
+
+        private void DrawName(RegionF regionF, Graphics g)
+        {
+            var nameFontProperty = this.axisProperty.AxisFont;
+            var nameFont = new Font(nameFontProperty.FontName, nameFontProperty.FontSize);
+            var w = regionF.OffsetCordinate.X + regionF.Width / 2f;
+            var h = regionF.OffsetCordinate.Y + regionF.Height / 2f;
+            var point = new PointF(w, h);
+            var axisNameBrush = BrushToColorConveter.ConvertColorToBrush(this.axisProperty.AxisFont.FontColor);
+            g.DrawString(this.axisProperty.AxisName, nameFont, axisNameBrush, point);
+            nameFont.Dispose();
+        }
+
         public void DrawLabel(RegionF regionF, IEnumerable<string> values, Graphics g)
         {
-            throw new NotImplementedException();
+            if (values.Count() < 2) throw new CountOutOfRangeException("要素は2以上にしてください");
+            DrawValue(regionF, values, g);
+            DrawName(regionF, g);
         }
 
         public void SetName(string name)
@@ -32,12 +70,12 @@ namespace GraphLibrary.Labels
             this.axisProperty.AxisName = name;
         }
 
-        public void SetValueFont(Font font)
+        public void SetValueFont(FontProperty font)
         {
             this.axisProperty.ValueFont = font;
         }
 
-        public void SetAxisFont(Font font)
+        public void SetAxisFont(FontProperty font)
         {
             this.axisProperty.AxisFont = font;
         }

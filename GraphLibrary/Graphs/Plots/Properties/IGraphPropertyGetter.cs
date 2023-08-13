@@ -12,6 +12,6 @@ namespace GraphLibrary.Graphs.Plots
         string GetName();
         Color GetColor();
 
-        int GetSize();
+        float GetSize();
     }
 }

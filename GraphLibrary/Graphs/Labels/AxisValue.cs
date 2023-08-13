@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphLibrary.Graphs.Labels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GraphLibrary.Labels
 {
-    public class AxisValue
+    public class AxisValue : IEquatable<AxisValue>, IAxisValue
     {
         const int MIN_DIVISION_VALUE = 2;
 
@@ -36,17 +37,11 @@ namespace GraphLibrary.Labels
             }
         }
 
-        public override bool Equals(object obj)
+        public bool Equals(AxisValue other)
         {
-            var axisValue = (AxisValue)obj;
-            return (this.MinValue == axisValue.MinValue &&
-                    this.MaxValue == axisValue.MaxValue &&
-                    this.DivisionValue == axisValue.DivisionValue);
-        }
-
-        public override int GetHashCode()
-        {
-            return base.GetHashCode();
+            return (this.MinValue == other.MinValue &&
+                    this.MaxValue == other.MaxValue &&
+                    this.DivisionValue == other.DivisionValue);
         }
     }
 }
