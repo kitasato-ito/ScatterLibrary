@@ -29,15 +29,27 @@
         private void InitializeComponent()
         {
             GraphLibrary.PlotModel plotModel1 = new GraphLibrary.PlotModel();
+            this.ShowGraphButton = new System.Windows.Forms.Button();
             this.graphView1 = new GraphLibrary.GraphView();
             this.SuspendLayout();
+            // 
+            // ShowGraphButton
+            // 
+            this.ShowGraphButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.ShowGraphButton.Location = new System.Drawing.Point(361, 335);
+            this.ShowGraphButton.Name = "ShowGraphButton";
+            this.ShowGraphButton.Size = new System.Drawing.Size(176, 55);
+            this.ShowGraphButton.TabIndex = 1;
+            this.ShowGraphButton.Text = "Update";
+            this.ShowGraphButton.UseVisualStyleBackColor = false;
+            this.ShowGraphButton.Click += new System.EventHandler(this.ShowGraphButton_Click);
             // 
             // graphView1
             // 
             this.graphView1.GraphModel = plotModel1;
-            this.graphView1.Location = new System.Drawing.Point(82, 36);
+            this.graphView1.Location = new System.Drawing.Point(55, 12);
             this.graphView1.Name = "graphView1";
-            this.graphView1.Size = new System.Drawing.Size(557, 269);
+            this.graphView1.Size = new System.Drawing.Size(546, 236);
             this.graphView1.TabIndex = 0;
             this.graphView1.Text = "graphView1";
             // 
@@ -46,6 +58,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.ShowGraphButton);
             this.Controls.Add(this.graphView1);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -56,6 +69,7 @@
         #endregion
 
         private GraphLibrary.GraphView graphView1;
+        private System.Windows.Forms.Button ShowGraphButton;
     }
 }
 

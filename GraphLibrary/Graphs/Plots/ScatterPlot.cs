@@ -29,13 +29,20 @@ namespace GraphLibrary.Graphs.Plots
                 var dataPoint = base.datas[i];
                 if (!base.IsWidthinRangeValue(xRange, yRange, dataPoint)) continue;
 
-                var x = dataPoint.XValue * region.Width;
-                var y = (1 - dataPoint.YValue) * region.Height;
-                var data = new PointF(region.OffsetCordinate.X + x, region.OffsetCordinate.Y + y);
+                var data = CalcurateDataPoint(region, dataPoint, xRange, yRange);
                 var rectF = CalcurateOffsetCordinate(data, size);
                 g.FillEllipse(brush, rectF);
             }
+            brush.Dispose();
         }
+
+        private PointF CalcurateDataPoint(RegionF region, DataPoint dataPoint, RangeF xRange, RangeF yRange)
+        {
+            var x = base.MinMaxScaler(xRange, dataPoint.XValue) * region.Width;
+            var y = (1 - base.MinMaxScaler(yRange, dataPoint.YValue)) * region.Height;
+            return new PointF(region.OffsetCordinate.X + x, region.OffsetCordinate.Y + y);
+        }
+
 
         private RectangleF CalcurateOffsetCordinate(PointF data, float size)
         {

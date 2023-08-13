@@ -32,6 +32,7 @@ namespace GraphLibrary.Graphs.Titles
             g.DrawString(this.Title, font, brush, point);
 
             font.Dispose();
+            brush.Dispose();
         }
     }
 }

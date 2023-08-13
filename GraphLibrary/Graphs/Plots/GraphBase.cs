@@ -29,9 +29,10 @@ namespace GraphLibrary.Graphs.Plots
             return true;
         }
 
-        protected float MinMaxScaler(RangeF xRange, float xValue)
+        protected float MinMaxScaler(RangeF range, float value)
         {
-            return (xValue - xRange.Min) / (xRange.Max - xRange.Min);
+            //if (range.Max == range.Min) throw new Exception();
+            return (value - range.Min) / (range.Max - range.Min);
         }
 
         protected void SetSize(float size)

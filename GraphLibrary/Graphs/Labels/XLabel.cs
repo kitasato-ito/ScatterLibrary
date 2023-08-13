@@ -30,8 +30,8 @@ namespace GraphLibrary.Labels
         private void DrawValue(RegionF regionF, IEnumerable<string> values, Graphics g)
         {
             var valueFontProperty = this.axisProperty.ValueFont;
-            var count = values.Count() - 1;
-            var widthUnit = regionF.Width / (float)count;
+            var count = (float)values.Count();
+            var widthUnit = regionF.Width / (count - 1f);
             var pointF = regionF.OffsetCordinate;
             var valueFont = new Font(valueFontProperty.FontName, valueFontProperty.FontSize);
             //To Hack ; AxisPropertyに入れる
@@ -44,6 +44,7 @@ namespace GraphLibrary.Labels
                 g.DrawString(values.ElementAt(i), valueFont, valueBrush, _point);
             }
             valueFont.Dispose();
+            valueBrush.Dispose();
         }
 
         private void DrawName(RegionF regionF, Graphics g)
@@ -56,6 +57,7 @@ namespace GraphLibrary.Labels
             var axisNameBrush = BrushToColorConveter.ConvertColorToBrush(this.axisProperty.AxisFont.FontColor);
             g.DrawString(this.axisProperty.AxisName, nameFont, axisNameBrush, point);
             nameFont.Dispose();
+            axisNameBrush.Dispose();
         }
 
         public void DrawLabel(RegionF regionF, IEnumerable<string> values, Graphics g)
