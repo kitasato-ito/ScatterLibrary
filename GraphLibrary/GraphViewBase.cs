@@ -28,7 +28,6 @@ namespace GraphLibrary
 
         public GraphViewBase()
         {
-            InitializeComponent();
         }
 
         private float GetWidth()

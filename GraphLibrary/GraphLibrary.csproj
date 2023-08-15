@@ -87,14 +87,8 @@
     <Compile Include="GraphView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="GraphView.Designer.cs">
-      <DependentUpon>GraphView.cs</DependentUpon>
-    </Compile>
     <Compile Include="GraphViewBase.cs">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="GraphViewBase.Designer.cs">
-      <DependentUpon>GraphViewBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Graphs\Labels\AxisValue.cs" />
