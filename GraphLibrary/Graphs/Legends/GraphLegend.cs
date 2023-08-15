@@ -30,6 +30,15 @@ namespace GraphLibrary.Graphs.Legends
             this.legendList.Clear();
         }
 
+        public bool Contains(IGraphPropertyGetter component)
+        {
+            foreach(var _legend in legendList)
+            {
+                if (_legend.Equals(component)) return true;
+            }
+            return false;
+        }
+
         public void DrawLegend(RegionF region, Graphics g)
         {
             var count = this.legendList.Count();
@@ -51,6 +60,7 @@ namespace GraphLibrary.Graphs.Legends
                 brush.Dispose();
             }
         }
+
 
         public void Remove(IGraphPropertyGetter component)
         {

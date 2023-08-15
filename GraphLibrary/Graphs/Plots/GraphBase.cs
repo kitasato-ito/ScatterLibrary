@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GraphLibrary.Graphs.Plots
 {
-    public abstract class GraphBase : IGraph, IListContainer<DataPoint>
+    public abstract class GraphBase : IGraph, IListContainer<DataPoint>, IEquatable<IGraph>
     {
 
         protected List<DataPoint> datas;
@@ -80,6 +80,30 @@ namespace GraphLibrary.Graphs.Plots
         {
             if (!this.datas.Contains(component)) return;
             this.datas.Remove(component);
+        }
+
+        public bool Contains(DataPoint component)
+        {
+            foreach(var data in datas)
+            {
+                if (data.Equals(component)) return true;
+            }
+            return false;
+        }
+
+        public bool Equals(IGraph other)
+        {
+            return this.GetGraphProperty().GetName() == other.GetGraphProperty().GetName();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as GraphBase);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
     }
 }

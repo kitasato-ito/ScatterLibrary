@@ -11,5 +11,7 @@ namespace GraphLibrary
         void Add(TComponent component);
         void Remove(TComponent component);
         void Clear();
+
+        bool Contains(TComponent component);
     }
 }

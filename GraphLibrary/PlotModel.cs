@@ -19,7 +19,7 @@ namespace GraphLibrary
 {
     public class PlotModel : IPlotModel
     {
-        private IList<IGraph> graphList = new List<IGraph>();
+        private List<IGraph> graphList = new List<IGraph>();
 
         private ILabel xLabel = new XLabel(DefaultPlotModel.DefaultXLabelName());
         private ILabel yLabel = new YLabel(DefaultPlotModel.DefaultYLabelName());
@@ -53,8 +53,11 @@ namespace GraphLibrary
 
         public void Add(IGraph component)
         {
-            this.graphList.Add(component);
-            this.legend.Add(component.GetGraphProperty());
+            if(!this.graphList.Contains(component))
+            {
+                this.graphList.Add(component);
+                this.legend.Add(component.GetGraphProperty());
+            }
         }
 
         public void Clear()
@@ -181,5 +184,13 @@ namespace GraphLibrary
             }
         }
 
+        public bool Contains(IGraph component)
+        {
+            foreach(var _graph in this.graphList)
+            {
+                if (_graph.Equals(component)) return true;
+            }
+            return false;
+        }
     }
 }

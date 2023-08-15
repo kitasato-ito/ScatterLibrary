@@ -9,13 +9,28 @@ using System.Threading.Tasks;
 
 namespace GraphLibrary.Graphs.Plots
 {
-    public class GraphPropertyBase : IGraphPropertyGetter, IGraphPropertySetter
+    public class GraphPropertyBase : IGraphPropertyGetter, IGraphPropertySetter, IEquatable<IGraphPropertyGetter>
     {
         protected PlotProperty plotProperty;
 
         public GraphPropertyBase()
         {
             this.plotProperty = DefaultProperty.GetDefaultProperty();
+        }
+
+        public bool Equals(IGraphPropertyGetter other)
+        {
+            return this.plotProperty.PlotName == other.GetName();
+        }
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as GraphPropertyBase);
+        }
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
         }
 
         public Color GetColor()

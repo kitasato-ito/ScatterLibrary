@@ -30,20 +30,12 @@ namespace GraphLibrary.Graphs.Plots
             var brush = BrushToColorConveter.ConvertColorToBrush(base.graphPropertyGetter.GetColor());
             var width = base.graphPropertyGetter.GetSize();
             var pen = new Pen(brush, width);
-            //for(int i = 1; i < count; i++)
-            //{
-            //    var data1 = CalcuratePoint(region, base.datas[i - 1], xRange, yRange);
-            //    var data2 = CalcuratePoint(region, base.datas[i], xRange, yRange);
-            //    g.DrawLine(pen, data1.X, data1.Y, data2.X, data2.Y);
-            //}
-            var points = new List<PointF>();
-            for (int i = 0; i < count; i++)
+            for (int i = 1; i < count; i++)
             {
-                var data = CalcuratePoint(region, base.datas[i], xRange, yRange);
-                points.Add(data);
+                var data1 = CalcuratePoint(region, base.datas[i - 1], xRange, yRange);
+                var data2 = CalcuratePoint(region, base.datas[i], xRange, yRange);
+                g.DrawLine(pen, data1.X, data1.Y, data2.X, data2.Y);
             }
-
-            g.DrawLines(pen, points.ToArray());
             
             brush.Dispose();
             pen.Dispose();
