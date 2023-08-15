@@ -11,25 +11,40 @@ namespace GraphLibrary.Graphs.Plots
 {
     public sealed class LinePlot : GraphBase
     {
+        private const float DEFAULT_LINE_WIDTH = 2f;
+        private const string DEFAULT_LINENAME = "Line1";
+        private readonly static Color DEFAULT_LINE_COLOR = Color.Blue;
         public LinePlot() : base()
         {
-            base.SetSize(2f);
-            base.SetName("Line1");
-            base.SetColor(Color.Blue);
+            base.SetSize(DEFAULT_LINE_WIDTH);
+            base.SetName(DEFAULT_LINENAME);
+            base.SetColor(DEFAULT_LINE_COLOR);
         }
+
+
         public override void DrawPlot(RegionF region, RangeF xRange, RangeF yRange, Graphics g)
         {
             int count = base.datas.Count();
             if (count == 0) return;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             var brush = BrushToColorConveter.ConvertColorToBrush(base.graphPropertyGetter.GetColor());
             var width = base.graphPropertyGetter.GetSize();
             var pen = new Pen(brush, width);
-            for(int i = 1; i < count; i++)
+            //for(int i = 1; i < count; i++)
+            //{
+            //    var data1 = CalcuratePoint(region, base.datas[i - 1], xRange, yRange);
+            //    var data2 = CalcuratePoint(region, base.datas[i], xRange, yRange);
+            //    g.DrawLine(pen, data1.X, data1.Y, data2.X, data2.Y);
+            //}
+            var points = new List<PointF>();
+            for (int i = 0; i < count; i++)
             {
-                var data1 = CalcuratePoint(region, base.datas[i - 1], xRange, yRange);
-                var data2 = CalcuratePoint(region, base.datas[i], xRange, yRange);
-                g.DrawLine(pen, data1.X, data1.Y, data2.X, data2.Y);
+                var data = CalcuratePoint(region, base.datas[i], xRange, yRange);
+                points.Add(data);
             }
+
+            g.DrawLines(pen, points.ToArray());
+            
             brush.Dispose();
             pen.Dispose();
         }

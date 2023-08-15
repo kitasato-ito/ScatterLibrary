@@ -70,7 +70,6 @@
     <Compile Include="Graphs\Labels\YLabel.cs" />
     <Compile Include="Graphs\Legends\GraphLegend.cs" />
     <Compile Include="Graphs\Legends\ILegend.cs" />
-    <Compile Include="Graphs\Plots\BarPlot.cs" />
     <Compile Include="Graphs\Plots\GraphBase.cs" />
     <Compile Include="Graphs\Plots\IGraph.cs" />
     <Compile Include="Graphs\Plots\LinePlot.cs" />

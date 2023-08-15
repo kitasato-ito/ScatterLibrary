@@ -11,17 +11,21 @@ namespace GraphLibrary.Graphs.Plots
 {
     public sealed class ScatterPlot : GraphBase
     {
+        private const float DEFAULT_SCATTER_DIAMETER = 8f;
+        private const string DEFAULT_SCATTERNAME = "Scatter1";
+        private readonly static Color DEFAULT_SCATTER_COLOR = Color.Blue;
         public ScatterPlot() : base()
         {
-            base.SetSize(8f);
-            base.SetName("Scatter1");
-            base.SetColor(Color.Blue);
+            base.SetSize(DEFAULT_SCATTER_DIAMETER);
+            base.SetName(DEFAULT_SCATTERNAME);
+            base.SetColor(DEFAULT_SCATTER_COLOR);
         }     
 
         public override void DrawPlot(RegionF region, RangeF xRange, RangeF yRange, Graphics g)
         {
             int count = base.datas.Count();
             if (count == 0) return;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             var brush = BrushToColorConveter.ConvertColorToBrush(base.graphPropertyGetter.GetColor());
             var size = base.graphPropertyGetter.GetSize();
             for (int i = 0; i < count; i++)

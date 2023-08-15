@@ -17,11 +17,6 @@ namespace GraphLibrary.Generics.Constant
             return Color.Black;
         }
 
-        public static string DefaultLabelName()
-        {
-            return "Label1";
-        }
-
         public static string DefaultPlotName()
         {
             return "Graph1";
