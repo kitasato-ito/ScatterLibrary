@@ -180,5 +180,6 @@ namespace GraphLibrary
                 graph.DrawPlot(region, xRange, yRange, g);
             }
         }
+
     }
 }

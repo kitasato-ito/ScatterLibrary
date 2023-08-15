@@ -32,7 +32,6 @@ namespace GraphLibrary
 
         public GraphView() : base()
         {
-            InitializeComponent();
         }
 
         /// <summary>
