@@ -13,7 +13,7 @@ namespace GraphLibrary.Graphs.Plots
     {
         public ScatterPlot() : base()
         {
-            base.SetSize(3f);
+            base.SetSize(8f);
             base.SetName("Scatter1");
             base.SetColor(Color.Blue);
         }     

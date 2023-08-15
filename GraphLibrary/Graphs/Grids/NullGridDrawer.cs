@@ -15,9 +15,10 @@ namespace GraphLibrary.Graphs
     internal class NullGridDrawer : IGridDrawer
     {
         private Color color = DefaultColor.DefaultGridColor();
-
-        public NullGridDrawer()
+        private bool isHorizontalGrid = false;
+        public NullGridDrawer(bool isHorizontalGrid)
         {
+            this.isHorizontalGrid = isHorizontalGrid;
         }
 
         public void DrawGrid(RegionF regionF, AxisValue axisValue, Graphics g)

@@ -9,16 +9,16 @@ namespace GraphLibrary.Generics
 {
     internal static class GridFactory
     {
-        public static IGridDrawer CreateGridDrawer(GridLineType lineType)
+        public static IGridDrawer CreateGridDrawer(GridLineType lineType, bool isHorizontal)
         {
             switch(lineType)
             {
                 case GridLineType.NONE:
-                    return new NullGridDrawer();
+                    return new NullGridDrawer(isHorizontal);
                 case GridLineType.LINE:
-                    return new LineGridDrawer();
+                    return new LineGridDrawer(isHorizontal);
                 case GridLineType.DOTLINE:
-                    return new DotGridDrawer();
+                    return new DotGridDrawer(isHorizontal);
                 default:
                     throw new NotImplementedException();
             }

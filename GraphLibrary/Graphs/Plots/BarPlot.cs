@@ -16,7 +16,7 @@ namespace GraphLibrary.Graphs.Plots
         }
         public override void DrawPlot(RegionF region, RangeF xRange, RangeF yRange, Graphics g)
         {
-            return;
+            
         }
 
         public void SetBarWidth(float width)

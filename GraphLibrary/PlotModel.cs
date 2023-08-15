@@ -27,8 +27,8 @@ namespace GraphLibrary
         private ITitle title = new GraphTitle(DefaultPlotModel.DefaultTitleName());
         private ILegend legend = new GraphLegend();
 
-        private IGridDrawer xGridDrawer = new NullGridDrawer();
-        private IGridDrawer yGridDrawer = new NullGridDrawer();
+        private IGridDrawer xGridDrawer = new NullGridDrawer(false);
+        private IGridDrawer yGridDrawer = new NullGridDrawer(true);
 
         private AxisValue xAxisValue = DefaultPlotModel.DefaultAxisValue();
         private AxisValue yAxisValue = DefaultPlotModel.DefaultAxisValue();
@@ -89,7 +89,8 @@ namespace GraphLibrary
 
         public void SetXGrid(GridLineType lineType, Color color)
         {
-            this.xGridDrawer = GridFactory.CreateGridDrawer(lineType);
+            //XなのでVertical
+            this.xGridDrawer = GridFactory.CreateGridDrawer(lineType, false);
             this.xGridDrawer.SetColor(color);
         }
 
@@ -100,7 +101,8 @@ namespace GraphLibrary
 
         public void SetYGrid(GridLineType lineType, Color color)
         {
-            this.yGridDrawer = GridFactory.CreateGridDrawer(lineType);
+            //YなのでHorizontal
+            this.yGridDrawer = GridFactory.CreateGridDrawer(lineType, true);
             this.yGridDrawer.SetColor(color);
         }
         public void SetYGrid(Color color)

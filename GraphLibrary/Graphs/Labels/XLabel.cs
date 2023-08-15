@@ -38,7 +38,7 @@ namespace GraphLibrary.Labels
             var valueBrush = BrushToColorConveter.ConvertColorToBrush(this.axisProperty.ValueFont.FontColor);
             for (int i = 0; i < count; i++)
             {
-                var x = pointF.X + widthUnit * (float)i;
+                var x = pointF.X + widthUnit * (float)i - 5f; //6fは補正
                 var y = pointF.Y;
                 var _point = new PointF(x, y);
                 g.DrawString(values.ElementAt(i), valueFont, valueBrush, _point);
