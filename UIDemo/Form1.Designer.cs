@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            GraphLibrary.PlotModel plotModel2 = new GraphLibrary.PlotModel();
+            GraphLibrary.ValuePlotModel plotModel2 = new GraphLibrary.ValuePlotModel();
             this.ShowGraphButton = new System.Windows.Forms.Button();
             this.graphView1 = new GraphLibrary.GraphView();
             this.button1 = new System.Windows.Forms.Button();

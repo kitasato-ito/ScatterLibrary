@@ -21,7 +21,7 @@ namespace GraphLibrary.Graphs
             this.isHorizontalGrid = isHorizontalGrid;
         }
 
-        public void DrawGrid(RegionF regionF, AxisValue axisValue, Graphics g)
+        public void DrawGrid(RegionF regionF, IEnumerable<string> values, Graphics g)
         {
             return;
         }

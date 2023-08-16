@@ -12,16 +12,16 @@ namespace GraphLibrary
 {
     public interface IGraphView : IGraphViewBase
     {
-        PlotModel GraphModel { get; set; }
+        PlotModelBase GraphModel { get; set; }
     }
 
     public partial class GraphView : GraphViewBase, IGraphView
     {
 
-        private PlotModel _plotModel = new PlotModel();
+        private PlotModelBase _plotModel = new ValuePlotModel();
 
         [Browsable(false)]
-        public PlotModel GraphModel
+        public PlotModelBase GraphModel
         {
             get { return this._plotModel; }
             set

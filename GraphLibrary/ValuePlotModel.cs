@@ -17,7 +17,7 @@ using GraphLibrary.Struct;
 
 namespace GraphLibrary
 {
-    public class PlotModel : IPlotModel
+    public class ValuePlotModel : PlotModelBase
     {
         private List<IGraph> graphList = new List<IGraph>();
 
@@ -33,7 +33,7 @@ namespace GraphLibrary
         private AxisValue xAxisValue = DefaultPlotModel.DefaultAxisValue();
         private AxisValue yAxisValue = DefaultPlotModel.DefaultAxisValue();
 
-        public PlotModel()
+        public ValuePlotModel()
         {
         }
 
@@ -148,33 +148,36 @@ namespace GraphLibrary
             this.yLabel.SetValueFont(valueFont);
         }
 
-        internal void DrawXLabel(RegionF region, Graphics g)
+        internal override void DrawXLabel(RegionF region, Graphics g)
         {
             var decimalString = DecimalPlaceConverter.ConvertIntToDecimalPlace(xDecimalPlaces);
             var values = this.xAxisValue.GetEnumerableValues().Select(v => v.ToString(decimalString));
             this.xLabel.DrawLabel(region, values , g);
         }
-        internal void DrawYLabel(RegionF region, Graphics g)
+        internal override void DrawYLabel(RegionF region, Graphics g)
         {
             var decimalString = DecimalPlaceConverter.ConvertIntToDecimalPlace(yDecimalPlaces);
             var values = this.yAxisValue.GetEnumerableValues().Select(v => v.ToString(decimalString));
             this.yLabel.DrawLabel(region, values, g);
         }
-        internal void DrawLegend(RegionF region, Graphics g)
+        internal override void DrawLegend(RegionF region, Graphics g)
         {
             if (!this.showLegend) return;
             this.legend.DrawLegend(region, g);
         }
-        internal void DrawTitle(RegionF region, Graphics g)
+        internal override void DrawTitle(RegionF region, Graphics g)
         {
             this.title.DrawTitle(region, g);
         }
-        internal void DrawGrid(RegionF region, Graphics g)
+        internal override void DrawGrid(RegionF region, Graphics g)
         {
-            this.xGridDrawer.DrawGrid(region, this.xAxisValue, g);
-            this.yGridDrawer.DrawGrid(region, this.yAxisValue, g);
+            var decimalString = DecimalPlaceConverter.ConvertIntToDecimalPlace(xDecimalPlaces);
+            var xValues = this.xAxisValue.GetEnumerableValues().Select(v => v.ToString(decimalString));
+            var yValues = this.yAxisValue.GetEnumerableValues().Select(v => v.ToString(decimalString));
+            this.xGridDrawer.DrawGrid(region, xValues, g);
+            this.yGridDrawer.DrawGrid(region, yValues, g);
         }
-        internal void DrawPlot(RegionF region, Graphics g)
+        internal override void DrawPlot(RegionF region, Graphics g)
         {
             var xRange = this.xAxisValue.GetRange();
             var yRange = this.yAxisValue.GetRange();

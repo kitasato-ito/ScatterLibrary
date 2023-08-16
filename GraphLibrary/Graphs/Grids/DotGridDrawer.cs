@@ -25,11 +25,10 @@ namespace GraphLibrary.Graphs
             this.isHorizontalGrid = isHorizontalGrid;
         }
 
-        public void DrawGrid(RegionF regionF, AxisValue axisValue, Graphics g)
+        public void DrawGrid(RegionF regionF, IEnumerable<string> values, Graphics g)
         {
-            var values = axisValue.GetEnumerableValues();
             if (values.Count() <= 2) return;
-            if (isHorizontalGrid)
+            if (this.isHorizontalGrid)
             {
                 DrawHorizontalGrid(regionF, values, g);
             }
@@ -40,20 +39,18 @@ namespace GraphLibrary.Graphs
         }
 
         //X軸方向
-        private void DrawHorizontalGrid(RegionF regionF, IEnumerable<float> values, Graphics g)
+        private void DrawHorizontalGrid(RegionF regionF, IEnumerable<string> values, Graphics g)
         {
-            var amount = values.Count();
+            var amount = values.Count() - 1;
             var heightF = regionF.Height;
-            var ymin = values.ElementAt(0);
-            var ymax = values.ElementAt(amount - 1);
             var xStart = regionF.OffsetCordinate.X;
             var xEnd = regionF.OffsetCordinate.X + regionF.Width;
             var pen = new Pen(color, PEN_WIDTH);
-            for (int i = 1; i < amount - 1; i++)
+            var stepHeight = heightF / (float)amount;
+            var h = heightF - stepHeight;
+            for (int i = 1; i < amount; i++)
             {
-                var value = values.ElementAt(i);
-                var y = ((1f - (value - ymin) / (ymax - ymin)) * heightF) + regionF.OffsetCordinate.Y;
-
+                var y = h + regionF.OffsetCordinate.Y;
                 var currentXStart = xStart;
                 var currentXEnd = xStart + DOT_LENGTH;
                 while (currentXStart <= xEnd)
@@ -62,24 +59,24 @@ namespace GraphLibrary.Graphs
                     currentXStart += DOT_LENGTH + DOT_INTERVAL;
                     currentXEnd = (currentXEnd > xEnd) ? xEnd :  currentXEnd + DOT_LENGTH + DOT_INTERVAL;
                 }
+                h -= stepHeight;
             }
             pen.Dispose();
         }
 
         //Y軸方向
-        private void DrawVerticalGrid(RegionF regionF, IEnumerable<float> values, Graphics g)
+        private void DrawVerticalGrid(RegionF regionF, IEnumerable<string> values, Graphics g)
         {
-            var amount = values.Count();
+            var amount = values.Count() - 1;
             var widthF = regionF.Width;
-            var xmin = values.ElementAt(0);
-            var xmax = values.ElementAt(amount - 1);
             var yStart = regionF.OffsetCordinate.Y;
             var yEnd = regionF.OffsetCordinate.Y + regionF.Height;
             var pen = new Pen(color, PEN_WIDTH);
-            for (int i = 1; i < amount - 1; i++)
+            var stepWidth = widthF / (float)amount;
+            var w = stepWidth;
+            for (int i = 1; i < amount; i++)
             {
-                var value = values.ElementAt(i);
-                var x = ((value - xmin) / (xmax - xmin) * widthF) + regionF.OffsetCordinate.X;
+                var x = w + regionF.OffsetCordinate.X;
                 var currentYStart = yEnd;
                 var currentYEnd = yEnd - DOT_LENGTH;
                 while (yStart <= currentYStart)
@@ -88,6 +85,7 @@ namespace GraphLibrary.Graphs
                     currentYStart = currentYStart - (DOT_LENGTH + DOT_INTERVAL);
                     currentYEnd = (currentYEnd < yStart) ? yStart : currentYEnd - (DOT_LENGTH + DOT_INTERVAL);
                 }
+                w += stepWidth;
             }
             pen.Dispose();
         }

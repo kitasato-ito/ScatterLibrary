@@ -13,6 +13,6 @@ namespace GraphLibrary.Graphs
     internal interface IGridDrawer
     {
         void SetColor(Color color);
-        void DrawGrid(RegionF regionF, AxisValue axisValue, Graphics g);
+        void DrawGrid(RegionF regionF, IEnumerable<string> values, Graphics g);
     }
 }

@@ -11,5 +11,6 @@ namespace GraphLibrary
         NONE,
         DOTLINE,
         LINE,
+        INWARD_SCALE,
     }
 }

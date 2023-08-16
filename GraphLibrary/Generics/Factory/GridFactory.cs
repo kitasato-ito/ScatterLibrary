@@ -1,4 +1,5 @@
 ﻿using GraphLibrary.Graphs;
+using GraphLibrary.Graphs.Grids;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +20,8 @@ namespace GraphLibrary.Generics
                     return new LineGridDrawer(isHorizontal);
                 case GridLineType.DOTLINE:
                     return new DotGridDrawer(isHorizontal);
+                case GridLineType.INWARD_SCALE:
+                    return new InwardScaleGridDrawer(isHorizontal);
                 default:
                     throw new NotImplementedException();
             }

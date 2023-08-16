@@ -15,11 +15,12 @@ namespace UIDemo
 {
     public partial class Form1 : Form
     {
+        private ValuePlotModel plotModel = new ValuePlotModel();
         public Form1()
         {
             InitializeComponent();
-            this.graphView1.GraphModel.SetXGrid(GridLineType.DOTLINE, Color.Gray);
-            this.graphView1.GraphModel.SetYGrid(GridLineType.DOTLINE, Color.Gray);
+            this.plotModel.SetXGrid(GridLineType.INWARD_SCALE, Color.Gray);
+            this.plotModel.SetYGrid(GridLineType.INWARD_SCALE, Color.Gray);
         }
 
         private ScatterPlot line = new ScatterPlot();
@@ -31,7 +32,8 @@ namespace UIDemo
             line.Add(new DataPoint(4, 6));
             line.Add(new DataPoint(7, 2));
             line.Add(new DataPoint(9, 8));
-            this.graphView1.GraphModel.Add(line);
+            this.plotModel.Add(line);
+            this.graphView1.GraphModel = this.plotModel;
             this.graphView1.InvalidateView();
         }
 
