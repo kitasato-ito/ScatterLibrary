@@ -10,7 +10,7 @@ namespace GraphLibrary.Generics.Enum
     {
         NONE = 0,
         ONE = 1,
-        TWO = 1,
-        THREE = 2,
+        TWO = 2,
+        THREE = 3,
     }
 }

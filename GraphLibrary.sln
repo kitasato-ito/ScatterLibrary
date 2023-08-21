@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GraphLibrary", "GraphLibrar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIDemo", "UIDemo\UIDemo.csproj", "{0FD1666A-BD5F-445C-AF87-CE90923A7E34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UITest", "UITest\UITest.csproj", "{A0E5DBA6-B2A3-497F-9D5E-9C9D70EC7E39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GraphLibrary.Test", "UITest\GraphLibrary.Test.csproj", "{A0E5DBA6-B2A3-497F-9D5E-9C9D70EC7E39}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

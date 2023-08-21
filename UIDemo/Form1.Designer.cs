@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            GraphLibrary.ValuePlotModel plotModel2 = new GraphLibrary.ValuePlotModel();
+            GraphLibrary.ValuePlotModel valuePlotModel1 = new GraphLibrary.ValuePlotModel();
             this.ShowGraphButton = new System.Windows.Forms.Button();
             this.graphView1 = new GraphLibrary.GraphView();
             this.button1 = new System.Windows.Forms.Button();
@@ -47,8 +47,8 @@
             // 
             // graphView1
             // 
-            this.graphView1.GraphModel = plotModel2;
-            this.graphView1.Location = new System.Drawing.Point(55, 12);
+            this.graphView1.GraphModel = valuePlotModel1;
+            this.graphView1.Location = new System.Drawing.Point(69, 12);
             this.graphView1.Name = "graphView1";
             this.graphView1.Size = new System.Drawing.Size(567, 345);
             this.graphView1.TabIndex = 0;
